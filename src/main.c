@@ -400,6 +400,7 @@ void disclaimer() {
     //drawTGA(298, 36, 1, icon_tga);
     console_print_pos_aligned(6, 0, 1, "Created by: Ryuzaki-MrL");
     console_print_pos_aligned(7, 0, 1, "Modded by: GabyPCgeeK");
+    console_print_pos_aligned(8, 0, 1, "Controller Mod by: GaryOderNichts");
     console_print_pos_aligned(11, 0, 1, "Disclaimer:");
     console_print_pos_aligned(12, 0, 1, "There is always the potential for a brick.");
     console_print_pos_aligned(13, 0, 1, "Everything you do with this software is your own responsibility");
@@ -492,7 +493,7 @@ int Menu_Main(void) {
             OSScreenClearBufferEx(0, 0x00006F00);
         }
 
-        console_print_pos(0, 0, "SaveMii v%u.%u.%u.%s", VERSION_MAJOR, VERSION_MINOR, VERSION_MICRO, VERSION_MOD);
+        console_print_pos(0, 0, "SaveMii v%u.%u.%u.%s controller mod v1", VERSION_MAJOR, VERSION_MINOR, VERSION_MICRO, VERSION_MOD);
         console_print_pos(0, 1, "----------------------------------------------------------------------------");
 
         Title* titles = mode ? wiititles : wiiutitles;
