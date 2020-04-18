@@ -42,12 +42,20 @@ unsigned char *screenBuffer;
 uint32_t buttons_hold; //Held buttons
 uint32_t buttons_pressed; //Pressed buttons
 uint32_t buttons_released; //Released buttons
+KPADData kpad[4]; // kpad data for all 4 controllers
 
 void ScreenInit();
+void updateKpad(void);
 void updatePressedButtons();
 void updateHeldButtons();
 void updateReleasedButtons();
 bool stickPos(u8 stick, f32 value);
+int vpadtowpad(int button);
+int vpadtowpadclassic(int button);
+int vpadtowpadpro(int button);
+int kpadpressed(int i, int button);
+int kpadheld(int i, int button);
+int kpadreleased(int i, int button);
 int isPressed(int button);
 int isHeld(int button);
 int isReleased(int button);
