@@ -51,7 +51,8 @@ void updateReleasedButtons() {
     updateKpad();
 }
 
-bool stickPos(u8 stick, f32 value) {
+bool vpadstickPos(u8 stick, f32 value)
+{
     switch(stick) {
         case 0 :
             return (value > 0) ? (vpad.lstick.x > value): (vpad.lstick.x < value);
@@ -70,6 +71,94 @@ bool stickPos(u8 stick, f32 value) {
         default :
             return 0;
     }
+}
+
+bool wpadsticknunchuckPos(int i, u8 stick, f32 value)
+{
+    switch(stick) {
+        case 0 :
+            return (value > 0) ? (kpad[i].nunchuck.stick_x > value): (kpad[i].nunchuck.stick_x < value);
+        case 1 :
+            return (value > 0) ? (kpad[i].nunchuck.stick_y > value): (kpad[i].nunchuck.stick_y < value);
+        case 2 :
+            return 0; // nunchuck only has one stick
+        case 3 :
+            return 0; // nunchuck only has one stick
+        case 4 :
+            return ((kpad[i].nunchuck.stick_x > value) || (kpad[i].nunchuck.stick_x < -value)) || \
+                   ((kpad[i].nunchuck.stick_y > value) || (kpad[i].nunchuck.stick_y < -value));
+
+        default :
+            return 0;
+    }
+}
+
+bool wpadstickclassicPos(int i, u8 stick, f32 value)
+{
+    switch(stick) {
+        case 0 :
+            return (value > 0) ? (kpad[i].classic.lstick_x > value): (kpad[i].classic.lstick_x < value);
+        case 1 :
+            return (value > 0) ? (kpad[i].classic.lstick_y > value): (kpad[i].classic.lstick_y < value);
+        case 2 :
+            return (value > 0) ? (kpad[i].classic.rstick_x > value): (kpad[i].classic.rstick_x < value);
+        case 3 :
+            return (value > 0) ? (kpad[i].classic.rstick_y > value): (kpad[i].classic.rstick_y < value);
+        case 4 :
+            return ((kpad[i].classic.lstick_x > value) || (kpad[i].classic.lstick_x < -value)) || \
+                   ((kpad[i].classic.lstick_y > value) || (kpad[i].classic.lstick_y < -value)) || \
+                   ((kpad[i].classic.rstick_x > value) || (kpad[i].classic.rstick_x < -value)) || \
+                   ((kpad[i].classic.rstick_y > value) || (kpad[i].classic.rstick_y < -value));
+
+        default :
+            return 0;
+    }
+}
+
+bool wpadstickproPos(int i, u8 stick, f32 value)
+{
+    switch(stick) {
+        case 0 :
+            return (value > 0) ? (kpad[i].pro.lstick_x > value): (kpad[i].pro.lstick_x < value);
+        case 1 :
+            return (value > 0) ? (kpad[i].pro.lstick_y > value): (kpad[i].pro.lstick_y < value);
+        case 2 :
+            return (value > 0) ? (kpad[i].pro.rstick_x > value): (kpad[i].pro.rstick_x < value);
+        case 3 :
+            return (value > 0) ? (kpad[i].pro.rstick_y > value): (kpad[i].pro.rstick_y < value);
+        case 4 :
+            return ((kpad[i].pro.lstick_x > value) || (kpad[i].pro.lstick_x < -value)) || \
+                   ((kpad[i].pro.lstick_y > value) || (kpad[i].pro.lstick_y < -value)) || \
+                   ((kpad[i].pro.rstick_x > value) || (kpad[i].pro.rstick_x < -value)) || \
+                   ((kpad[i].pro.rstick_y > value) || (kpad[i].pro.rstick_y < -value));
+
+        default :
+            return 0;
+    }
+}
+
+bool wpadstickPos(int i, u8 stick, f32 value)
+{
+    u32 controllerType;
+    // check if the controller is connected
+    if (WPADProbe(i, &controllerType) != 0)
+        return 0;
+
+    switch (controllerType)
+    {
+    case WPAD_EXT_NUNCHUK:
+        return wpadsticknunchuckPos(i, stick, value);
+    case WPAD_EXT_CLASSIC:
+        return wpadstickclassicPos(i, stick, value);
+    case WPAD_EXT_PRO_CONTROLLER:
+        return wpadstickproPos(i, stick, value);
+    }
+
+    return 0;
+}
+
+bool stickPos(u8 stick, f32 value) {
+    return vpadstickPos(stick, value) || wpadstickPos(0, stick, value) || wpadstickPos(1, stick, value) || wpadstickPos(2, stick, value) || wpadstickPos(3, stick, value);
 }
 
 // converts a vpad mapping to a wpad mapping
