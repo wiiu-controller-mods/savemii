@@ -684,13 +684,13 @@ int Menu_Main(void) {
         updatePressedButtons();
         updateHeldButtons();
 
-        if (isPressed(VPAD_BUTTON_DOWN) || isHeld(VPAD_BUTTON_DOWN) || stickPos(1, -0.7) || stickPos(3, -0.7)) {
+        if (isPressed(VPAD_BUTTON_DOWN) || stickPos(1, -0.7) || stickPos(3, -0.7)) {
             if (entrycount <= 14) cursor = (cursor + 1) % entrycount;
             else if (cursor < 6) cursor++;
             else if ((cursor + scroll + 1) % entrycount) scroll++;
             else cursor = scroll = 0;
             os_usleep(100000);
-        } else if (isPressed(VPAD_BUTTON_UP) || isHeld(VPAD_BUTTON_UP) || stickPos(1, 0.7) || stickPos(3, 0.7)) {
+        } else if (isPressed(VPAD_BUTTON_UP) || stickPos(1, 0.7) || stickPos(3, 0.7)) {
             if (scroll > 0) cursor -= (cursor>6) ? 1 : 0 * (scroll--);
             else if (cursor > 0) cursor--;
             else if (entrycount > 14) scroll = entrycount - (cursor = 6) - 1;
@@ -698,7 +698,7 @@ int Menu_Main(void) {
             os_usleep(100000);
         }
 
-        if (isPressed(VPAD_BUTTON_LEFT) || isHeld(VPAD_BUTTON_LEFT) || stickPos(0, -0.7) || stickPos(2, -0.7)) {
+        if (isPressed(VPAD_BUTTON_LEFT) || stickPos(0, -0.7) || stickPos(2, -0.7)) {
             if (menu==3) {
                 if (task == 5) {
                     switch(cursor) {
@@ -746,7 +746,7 @@ int Menu_Main(void) {
                 }
             }
             os_usleep(100000);
-        } else if (isPressed(VPAD_BUTTON_RIGHT) || isHeld(VPAD_BUTTON_RIGHT) || stickPos(0, 0.7) || stickPos(2, 0.7)) {
+        } else if (isPressed(VPAD_BUTTON_RIGHT) || stickPos(0, 0.7) || stickPos(2, 0.7)) {
             if (menu == 3) {
                 if (task == 5) {
                     switch(cursor) {
