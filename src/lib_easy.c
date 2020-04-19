@@ -177,8 +177,8 @@ int vpadtowpad(int button)
     case VPAD_BUTTON_DOWN: return WPAD_BUTTON_DOWN;
     case VPAD_BUTTON_ZL: return 0;
     case VPAD_BUTTON_ZR: return 0;
-    case VPAD_BUTTON_L: return 0;
-    case VPAD_BUTTON_R: return 0;
+    case VPAD_BUTTON_L: return WPAD_BUTTON_PLUS;
+    case VPAD_BUTTON_R: return WPAD_BUTTON_MINUS;
     case VPAD_BUTTON_PLUS: return WPAD_BUTTON_PLUS;
     case VPAD_BUTTON_MINUS: return WPAD_BUTTON_MINUS;
     case VPAD_BUTTON_HOME: return WPAD_BUTTON_HOME;
