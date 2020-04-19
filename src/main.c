@@ -677,11 +677,11 @@ int Menu_Main(void) {
         console_print_pos(-4, -1, "%d", passedMs);*/
 
         flipBuffers();
-        while(1) {
-            updatePressedButtons();
-            updateHeldButtons();
-            if (isPressed(0xFFFF) || isHeld(0xFFFF) || stickPos(4, 0.7)) break;
-        }
+        // while(1) {
+        //     updatePressedButtons();
+        //     updateHeldButtons();
+        //     if (isPressed(0xFFFF) || isHeld(0xFFFF) || stickPos(4, 0.7)) break;
+        // }
         updatePressedButtons();
         updateHeldButtons();
 

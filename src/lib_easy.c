@@ -162,7 +162,7 @@ bool stickPos(u8 stick, f32 value) {
 }
 
 // converts a vpad mapping to a wpad mapping
-// returns -1 if there is no mapping for it
+// returns 0 if there is no mapping for it
 int vpadtowpad(int button)
 {
     switch (button)
@@ -175,24 +175,24 @@ int vpadtowpad(int button)
     case VPAD_BUTTON_RIGHT: return WPAD_BUTTON_RIGHT;
     case VPAD_BUTTON_UP: return WPAD_BUTTON_UP;
     case VPAD_BUTTON_DOWN: return WPAD_BUTTON_DOWN;
-    case VPAD_BUTTON_ZL: return -1;
-    case VPAD_BUTTON_ZR: return -1;
-    case VPAD_BUTTON_L: return -1;
-    case VPAD_BUTTON_R: return -1;
+    case VPAD_BUTTON_ZL: return 0;
+    case VPAD_BUTTON_ZR: return 0;
+    case VPAD_BUTTON_L: return 0;
+    case VPAD_BUTTON_R: return 0;
     case VPAD_BUTTON_PLUS: return WPAD_BUTTON_PLUS;
     case VPAD_BUTTON_MINUS: return WPAD_BUTTON_MINUS;
     case VPAD_BUTTON_HOME: return WPAD_BUTTON_HOME;
-    case VPAD_BUTTON_SYNC: return -1;
-    case VPAD_BUTTON_STICK_R: return -1;
-    case VPAD_BUTTON_STICK_L: return -1;
-    case VPAD_BUTTON_TV: return -1;
+    case VPAD_BUTTON_SYNC: return 0;
+    case VPAD_BUTTON_STICK_R: return 0;
+    case VPAD_BUTTON_STICK_L: return 0;
+    case VPAD_BUTTON_TV: return 0;
     }
 
-    return -1;
+    return 0;
 }
 
 // converts a vpad mapping to a wpad classic mapping
-// returns -1 if there is no mapping for it
+// returns 0 if there is no mapping for it
 int vpadtowpadclassic(int button)
 {
     switch (button)
@@ -212,17 +212,17 @@ int vpadtowpadclassic(int button)
     case VPAD_BUTTON_PLUS: return WPAD_CLASSIC_BUTTON_PLUS;
     case VPAD_BUTTON_MINUS: return WPAD_CLASSIC_BUTTON_MINUS;
     case VPAD_BUTTON_HOME: return WPAD_CLASSIC_BUTTON_HOME;
-    case VPAD_BUTTON_SYNC: return -1;
-    case VPAD_BUTTON_STICK_R: return -1;
-    case VPAD_BUTTON_STICK_L: return -1;
-    case VPAD_BUTTON_TV: return -1;
+    case VPAD_BUTTON_SYNC: return 0;
+    case VPAD_BUTTON_STICK_R: return 0;
+    case VPAD_BUTTON_STICK_L: return 0;
+    case VPAD_BUTTON_TV: return 0;
     }
 
-    return -1;
+    return 0;
 }
 
 // converts a vpad mapping to a wpad pro mapping
-// returns -1 if there is no mapping for it
+// returns 0 if there is no mapping for it
 int vpadtowpadpro(int button)
 {
     switch (button)
@@ -242,13 +242,13 @@ int vpadtowpadpro(int button)
     case VPAD_BUTTON_PLUS: return WPAD_PRO_BUTTON_PLUS;
     case VPAD_BUTTON_MINUS: return WPAD_PRO_BUTTON_MINUS;
     case VPAD_BUTTON_HOME: return WPAD_PRO_BUTTON_HOME;
-    case VPAD_BUTTON_SYNC: return -1;
+    case VPAD_BUTTON_SYNC: return 0;
     case VPAD_BUTTON_STICK_R: return WPAD_PRO_BUTTON_STICK_R;
     case VPAD_BUTTON_STICK_L: return WPAD_PRO_BUTTON_STICK_L;
-    case VPAD_BUTTON_TV: return -1;
+    case VPAD_BUTTON_TV: return 0;
     }
 
-    return -1;
+    return 0;
 }
 
 int kpadpressed(int i, int button)
